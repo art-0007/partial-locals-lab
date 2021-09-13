@@ -21,7 +21,7 @@ class StudentsController < ApplicationController
   end
 
   def index
-    @students = Student.all
+    @pagy, @students = pagy Student.search(params[:query]) || @students = Student.all , items: 10
   end
 
   def student_params
